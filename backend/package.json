@@ -2,7 +2,7 @@
     "name": "roamify",
     "private": true,
     "version": "0.0.0",
-    "type": "module",
+    "type": "commonjs",
     "scripts": {
         "start": "tsx watch server.ts"
     },
