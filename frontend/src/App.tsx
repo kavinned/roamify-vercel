@@ -19,11 +19,7 @@ function App() {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        const timer = setInterval(() => {
-            dispatch(checkAuthStatus());
-        }, 300000);
-
-        return () => clearInterval(timer);
+        dispatch(checkAuthStatus());
     }, [dispatch]);
 
     return (
