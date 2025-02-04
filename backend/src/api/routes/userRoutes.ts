@@ -90,8 +90,9 @@ router.post("/login", async (req, res) => {
     res.cookie("token", token, {
         httpOnly: true,
         maxAge: 3600 * 1000,
-        sameSite: "lax",
+        sameSite: "none",
         secure: true,
+        domain: "roamify1.vercel.app",
     })
         .status(200)
         .json({
