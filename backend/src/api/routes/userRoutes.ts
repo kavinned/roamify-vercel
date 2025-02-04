@@ -115,18 +115,41 @@ router.post("/logout", async (_req, res) => {
     return;
 });
 
-router.get("/verify", verifyJWT, async (req: RequestWithUser, res) => {
+router.get("/verify", async (req: RequestWithUser, res) => {
+    const jwtSecret = process.env.JWT_SECRET as string;
+    const token = req.cookies.token;
+
+    if (!token) {
+        res.status(401).json({ message: "Unauthorized: No token provided" });
+        return;
+    }
+
     try {
-        const user = await User.findById(req.user?.id).select("-password");
+        const decoded = jwt.verify(token, jwtSecret);
+        const user = await User.findById(decoded.id).select("-password");
         if (!user) {
             res.status(404).json({ message: "User not found" });
             return;
         }
-        res.json(user);
-        return;
-    } catch (error) {
-        res.status(500).json({ message: "Server error", error });
-        return;
+
+        const newToken = jwt.sign(
+            { id: user._id, email: user.email, name: user.name },
+            jwtSecret,
+            {
+                expiresIn: process.env.JWT_EXPIRATION,
+            }
+        );
+
+        res.cookie("token", newToken, {
+            httpOnly: true,
+            maxAge: 3600 * 1000,
+            sameSite: "none",
+            secure: true,
+        })
+            .status(200)
+            .json(user);
+    } catch (err) {
+        res.status(401).json({ message: "Unauthorized: Invalid token" });
     }
 });
 
