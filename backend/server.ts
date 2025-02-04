@@ -12,13 +12,7 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(
-    cors({
-        origin: "https://roamify1.vercel.app",
-        methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
-        credentials: true,
-    })
-);
+app.use(cors());
 app.use(express.json());
 
 connectDB();
