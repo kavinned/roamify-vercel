@@ -92,7 +92,6 @@ router.post("/login", async (req, res) => {
         maxAge: 3600 * 1000,
         sameSite: "none",
         secure: true,
-        domain: "roamify1.vercel.app",
     })
         .status(200)
         .json({
