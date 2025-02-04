@@ -1,22 +1,6 @@
 import { Schema, model } from "mongoose";
-
-interface Hotel {
-    name: string;
-    stars: number;
-    image: string;
-    distance: string;
-    distanceFromPoi: string;
-    pricePerNight: string;
-    cheapestPartner: string;
-}
-
-interface Places {
-    name: string;
-    address: string;
-    phone?: string;
-    site?: string;
-    types: string[];
-}
+import { Places } from "../store/reducers/poiSlice";
+import { Hotel } from "../store/reducers/hotelSlice";
 
 export interface Itinerary {
     _id?: string;
