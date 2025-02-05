@@ -109,7 +109,7 @@ router.post("/logout", async (_req, res) => {
     res.clearCookie("token", {
         httpOnly: true,
         secure: true,
-        sameSite: "strict",
+        sameSite: "none",
     });
     res.status(200).json({ message: "User logged out successfully" });
     return;
