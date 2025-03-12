@@ -58,8 +58,8 @@ Develop a web application where users can manage travel itineraries, search dest
 
 ## Deployment
 
-- **Frontend**: Vercel or Netlify.
-- **Backend**: Bun with Express on Render or Vercel.
+- **Frontend**: Vercel.
+- **Backend**: Vercel.
 - **Database**: MongoDB Atlas.
 
 ## Planned Enhancements
