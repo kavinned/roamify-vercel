@@ -12,14 +12,11 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-const allowedOrigin =
-    process.env.NODE_ENV === "development"
-        ? "http://localhost:5173"
-        : "https://roamify1.vercel.app";
+const allowedOrigins = ["http://localhost:5173", "https://roamify1.vercel.app"];
 
 app.use(
     cors({
-        origin: allowedOrigin,
+        origin: allowedOrigins,
         methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
         credentials: true,
     })
