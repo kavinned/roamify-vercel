@@ -3,7 +3,6 @@ import { TextAnimate } from "./ui/text-animate";
 
 export default function Hero() {
     const [imageLoaded, setImageLoaded] = useState(false);
-
     return (
         <div className="relative overflow-hidden w-full bg-zinc-900 py-24 sm:py-32 min-h-64 max-h-64 mt-16 flex items-center justify-start drop-shadow-lg">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -13,10 +12,7 @@ export default function Hero() {
                 src="assets/hero-image.jpg"
                 alt=""
                 className="absolute inset-0 w-screen object-cover object-top opacity-100 h-full z-1 mix-blend-plus-darker"
-                loading="eager"
-                onLoad={() => {
-                    setImageLoaded(true);
-                }}
+                onLoad={() => setImageLoaded(true)}
             />
             {imageLoaded && (
                 <div className="z-20 mix-blend-difference">
@@ -35,7 +31,6 @@ export default function Hero() {
                                 delay={0.1}
                                 as="h2"
                                 by="character"
-                                startOnView={true}
                             >
                                 Explore the World
                             </TextAnimate>
@@ -45,7 +40,6 @@ export default function Hero() {
                                 delay={0.3}
                                 as="p"
                                 by="word"
-                                startOnView={true}
                             >
                                 Discover amazing places and plan your perfect
                                 trip.
