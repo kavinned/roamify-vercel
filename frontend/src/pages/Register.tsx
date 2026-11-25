@@ -56,7 +56,7 @@ export default function Register() {
     }
 
     useEffect(() => {
-        if (!error && status === "succeeded") {
+        if (!error.message && status === "succeeded") {
             navigate("/login", {
                 state: {
                     message: {
